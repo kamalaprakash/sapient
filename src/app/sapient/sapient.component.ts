@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SapiantService } from '../sapiant.service';
 
 @Component({
@@ -10,60 +11,47 @@ export class SapientComponent implements OnInit {
   spaceXHeader: string = "SpaceX Launch Programs";
   launchYear: number[] = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020];
   launchYearClone: number[] = this.launchYear;
-  imageTitle: string = "test";
-  spaceXGallery: object;
-  lauchSucess: boolean = false;
-  searchYear: number[]=null;
-  buttonState:boolean[]=[true,false];
-  showNoData:boolean=false;
-  buttonStateClone:boolean[]=this.buttonState;
-  constructor(public sapiantService: SapiantService) { }
+  lauchSucess: boolean = undefined;
+  landSucess: boolean = undefined;
+  searchYear: number[] = null;
+  landButtonState: boolean[] = [true, false];
+  launchButtonState: boolean[] = [true, false];
+  showNoData: boolean = false;
+  lauchYearValue: number;
+  buttonStateClone: boolean[] = this.landButtonState;
+  constructor(public sapiantService: SapiantService,
+    public router: Router, public route:ActivatedRoute) { }
 
-  ngOnInit(): void {
-    this.onloadData();
+  ngOnInit() {
+
   }
-  onloadData() {
-    this.sapiantService.onloadRequest().subscribe((spaceXData) => {
-      this.spaceXGallery = spaceXData;
-    });
+  launchButtonStateChange(state): void {
+    const buttonFilterValue = this.buttonStateClone.filter((btnState) => btnState.toString() === state);
+    this.launchButtonState = buttonFilterValue.length > 0 ? buttonFilterValue : this.buttonStateClone;
   }
-  buttonStateChange(state){    
-    const buttonFilterValue = this.buttonState.filter((btnState) => btnState.toString() === state);
-    this.buttonState = buttonFilterValue.length>0 ? buttonFilterValue : this.buttonStateClone;
+  landButtonStateChange(state): void {
+    const buttonFilterValue = this.buttonStateClone.filter((btnState) => btnState.toString() === state);
+    this.landButtonState = buttonFilterValue.length > 0 ? buttonFilterValue : this.buttonStateClone;
   }
   launchSuccess() {
     this.lauchSucess = true;
-    this.sapiantService.launchSuccessRequest().subscribe((spaceXData) => {
-      this.spaceXGallery = spaceXData;
-    });
   }
   launchFailure() {
     this.lauchSucess = false;
-    this.onloadData();
   }
   landFailure() {
-    this.lauchSucess = false;
-    this.onloadData();
+    this.landSucess = false;
   }
-
   landSuccess() {
-    if (this.lauchSucess) {
-      this.sapiantService.landSuccessRequest().subscribe((spaceXData) => {
-        this.spaceXGallery = spaceXData;
-      });
-    }
+    this.landSucess = true;
   }
   filterLaunchYear(serachYear) {
-    this.launchYear=this.launchYearClone;
+    this.launchYear = this.launchYearClone;
     this.searchYear = this.launchYear.filter((year) => year === +serachYear);
-    this.launchYear = this.searchYear.length>0 ? this.searchYear : this.launchYearClone;    
+    this.launchYear = this.searchYear.length > 0 ? this.searchYear : this.launchYearClone;
   }
-  launchYearButtonClick(launchYear){
-    if (launchYear) {
-      this.sapiantService.launchYearRequest(launchYear).subscribe((spaceXData) => {
-        this.spaceXGallery = spaceXData;        
-        this.showNoData=spaceXData.length>0?false:true;
-      });
-    }
+  launchYearButtonClick(launchYear) {
+      this.router.navigate([launchYear])
+      this.lauchYearValue =launchYear;
   }
 }

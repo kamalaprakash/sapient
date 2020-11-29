@@ -5,18 +5,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SapiantService {
+  spaceXEndpoint: string = 'https://api.spaceXdata.com/v3/launches?limit=100';
 
   constructor(private httpClient: HttpClient) { }
   onloadRequest() {
-        return this.httpClient.get<any>('https://api.spaceXdata.com/v3/launches?limit=100');
-    }
-  launchSuccessRequest(){
-    return this.httpClient.get<any>('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true');
+    return this.httpClient.get<any>(this.spaceXEndpoint);
   }
-  landSuccessRequest(){
-    return this.httpClient.get<any>('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&land_success=true');
+  launchSuccessRequest() {
+    return this.httpClient.get<any>(this.spaceXEndpoint + '&launch_success=true');
   }
-  launchYearRequest(searchYear){
-    return this.httpClient.get<any>('https://api.spaceXdata.com/v3/launches?limit=100&launch_success=true&land_success=true&launch_year='+searchYear);
+  landSuccessRequest() {
+    return this.httpClient.get<any>(this.spaceXEndpoint + '&launch_success=true&land_success=true');
+  }
+  launchYearRequest(searchYear) {
+    return this.httpClient.get<any>(this.spaceXEndpoint + '&launch_success=true&land_success=true&launch_year=' + searchYear);
   }
 }

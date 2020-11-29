@@ -1,1 +1,169 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+  }
+  
+  .SpaceXWrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .SpaceXContainter {
+    background: #f2f2f2;
+    width: 100%;
+    float: left;
+    padding: 5px 10px;
+  }
+  
+  .sidebar {
+    width: 15%;
+    float: left;
+    padding: 5px 10px;
+    background: #fff;
+  }
+  
+  .sidebar h3 {
+    margin: 0px 0px 5px;
+  }
+  
+  .launch ul {
+    padding-left: 0px;
+    display: block;
+    max-width: 170px;
+    margin: 0 auto;
+  }
+  
+  .launch ul li {
+    list-style: none;
+    width: 50%;
+    float: left;
+    margin-bottom: 10px;
+  }
+  
+  .launch ul li:nth-child(2n) {
+    text-align: right;
+  }
+  
+  .launch input[type="text"],
+  .land input[type="text"] {
+    margin: 10px auto;
+    border: 0px;
+    border-bottom: 2px solid #80808080;
+    padding-bottom: 3px;
+    outline: none;
+    display: block;
+    width: 100%;
+    max-width: 120px;
+    text-align: center;
+  }
+  
+  .launch button:nth-child(3),
+  .land button:nth-child(3) {
+    float: right;
+    margin-right: 5px;
+  }
+  
+  .spaceXGallery {
+    width: calc(85% - 20px);
+    float: left;
+    margin-left: 20px;
+      display: flex;
+    flex-wrap: wrap;
+  }
+  .developer{
+      width:100%;
+      text-align: center;
+  }
+  .spaceXGallery .card h4 {
+    color: #1d1dbd;
+  }
+  .showData{
+      min-height: 500px;
+      width:100%;
+      text-align: center;
+  }
+  .spaceXGallery .card span {
+    color: #1d1dbd;
+  }
+  
+  .spaceXGallery .card {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .sidebar button:hover,.sidebar button:active {
+      opacity: 1;
+      cursor: pointer;
+  }
+  .spaceXGallery .card {
+    width: calc(25% - 10px);
+    background: #fff;
+    padding: 15px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar button:empty {
+    padding: 0;
+  }
+  
+  .card .thumbnail {
+    background: #f2f2f2;
+  }
+  
+  .card .thumbnail img {
+    margin: 0 auto;
+    display: block;
+    max-width:150px;
+    width:100%;
+  }
+  .sidebar button {
+    background: #09a909c4;
+    border: 0px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    opacity: .5;
+    text-transform: capitalize;
+  }
+  
+  .sidebar li:first-child button {
+    opacity: 1;
+  }
+  
+  * {
+    font-family: arial;
+  }
+  @media (max-width: 1024px) {
+  .sidebar{
+      width: 30%;
+  }
+  .spaceXGallery{
+          width: calc(70% - 20px);
+  }
+  .spaceXGallery .card{
+  width: calc(50% - 10px);
+  }
+  }
+  @media (max-width: 700px) {
+    .spaceXGallery .card,
+    .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .launch ul {
+      max-width: unset;
+    }
+  
+    .launch input[type="text"],
+    .land input[type="text"] {
+      max-width: 70%;
+    }
+  
+    .spaceXGallery {
+      width: 100%;
+      margin-left: 0px;
+    }
+  }

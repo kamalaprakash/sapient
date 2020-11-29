@@ -13,29 +13,17 @@
             </div>
             <div class="launch">
                 <input type="text" placeholder="Successful Launch"
-                (change)="buttonStateChange($event.target.value)">
-                <button (click)="launchSuccess()">{{buttonState[0]}}</button>
-                <button (click)="launchFailure()">{{buttonState[1]}}</button>
+                (change)="launchButtonStateChange($event.target.value)">
+                <button (click)="launchSuccess()">{{launchButtonState[0]}}</button>
+                <button (click)="launchFailure()">{{launchButtonState[1]}}</button>
             </div>
             <div class="land">
-                <input type="text" placeholder="Successful Land" (change)="buttonStateChange($event.target.value)">
-                <button (click)="landSuccess()">{{buttonState[0]}}</button>
-                <button (click)="landFailure()">{{buttonState[1]}}</button>
+                <input type="text" placeholder="Successful Land" (change)="landButtonStateChange($event.target.value)">
+                <button (click)="landSuccess()">{{landButtonState[0]}}</button>
+                <button (click)="landFailure()">{{landButtonState[1]}}</button>
             </div>
         </div>
-        <div class="spaceXGallery">
-            <div class="card" *ngFor="let spaceXData of spaceXGallery;">
-                <div class="thumbnail"><img src="{{spaceXData?.links?.mission_patch}}" alt="{{spaceXData?.mission_name}}" /></div>
-                <h4 title="{{spaceXData?.mission_name}}">{{spaceXData?.mission_name}} # {{spaceXData?.flight_number}}</h4>
-                <p>MissionIds :<span>{{spaceXData?.mission_id}}</span></p>
-                <p>Launch Year:<span>{{spaceXData?.launch_year}}</span></p>
-                <p>Successful Launch: <span>{{spaceXData?.launch_success}}</span></p>
-                <p>Successful Landing: <span>{{spaceXData?.launch_landing}}</span></p>
-            </div>
-        </div>
-        <h2 *ngIf="showNoData" class="showData"> No Data Found </h2>
-        <div>
-        </div>
-        <h4 class="developer">Developed By: <span>Kamala Prakash</span></h4>
+        <app-sapient-detail-page [isLauchSucess]="lauchSucess" [isLandSuccess]="landSucess"
+        [lauchYearValue]="lauchYearValue"></app-sapient-detail-page>
     </div>
 </div>
