@@ -131,7 +131,9 @@
   .sidebar li:first-child button {
     opacity: 1;
   }
-  
+  .filter{
+    font-weight: bold;
+  }
   * {
     font-family: arial;
   }
