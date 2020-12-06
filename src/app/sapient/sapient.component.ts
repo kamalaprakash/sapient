@@ -11,16 +11,17 @@ export class SapientComponent implements OnInit {
   spaceXHeader: string = "SpaceX Launch Programs";
   launchYear: number[] = [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020];
   launchYearClone: number[] = this.launchYear;
-  lauchSucess: boolean = undefined;
-  landSucess: boolean = undefined;
+  isLaunchYearButtonClick: boolean = undefined;
+  launchSuccess: boolean = undefined;
+  landSuccess: boolean = undefined;
   searchYear: number[] = null;
   landButtonState: boolean[] = [true, false];
   launchButtonState: boolean[] = [true, false];
   showNoData: boolean = false;
-  lauchYearValue: number;
+  launchYearValue: number;
   buttonStateClone: boolean[] = this.landButtonState;
   constructor(public sapiantService: SapiantService,
-    public router: Router, public route:ActivatedRoute) { }
+    public router: Router, public route: ActivatedRoute) { }
 
   ngOnInit() {
 
@@ -33,17 +34,55 @@ export class SapientComponent implements OnInit {
     const buttonFilterValue = this.buttonStateClone.filter((btnState) => btnState.toString() === state);
     this.landButtonState = buttonFilterValue.length > 0 ? buttonFilterValue : this.buttonStateClone;
   }
-  launchSuccess() {
-    this.lauchSucess = true;
+  isLaunchSuccess() {
+    this.launchSuccess = true;
+    this.filterApplyInUrl();
   }
-  launchFailure() {
-    this.lauchSucess = false;
+  isLaunchFailure() {
+    this.launchSuccess = false;
+    this.filterApplyInUrl();
   }
-  landFailure() {
-    this.landSucess = false;
+  isLandFailure() {
+    this.landSuccess = false;
+    this.filterApplyInUrl();
   }
-  landSuccess() {
-    this.landSucess = true;
+  isLandSuccess() {
+    this.landSuccess = true;
+    this.filterApplyInUrl();
+  }
+  filterApplyInUrl() {
+    if (this.launchSuccess && this.landSuccess && this.launchYearValue) {
+      this.router.navigate(['/'], {
+        queryParams: {
+          launch_success: 'true', land_success: 'true',
+          launch_Year: this.launchYearValue.toString()
+        }
+      });
+    } else if (this.launchSuccess && this.landSuccess) {
+      this.router.navigate(['/'], { queryParams: { launch_success: 'true', land_success: 'true' } });
+    } else if (this.launchSuccess && this.launchYearValue) {
+      this.router.navigate(['/'], {
+        queryParams: {
+          launch_success: 'true',
+          launch_Year: this.launchYearValue.toString()
+        }
+      });
+    } else if (this.landSuccess && this.launchYearValue) {
+      this.router.navigate(['/'], {
+        queryParams: {
+          land_success: 'true',
+          launch_Year: this.launchYearValue.toString()
+        }
+      });
+    } else if (this.launchSuccess) {
+      this.router.navigate(['/'], { queryParams: { launch_success: 'true' } });
+    } else if (this.landSuccess) {
+      this.router.navigate(['/'], { queryParams: { land_success: 'true' } });
+    } else if (this.launchYearValue) {
+      this.router.navigate(['/'], { queryParams: { launch_Year: this.launchYearValue.toString() } });
+    } else {
+      this.router.navigate(['/']);
+    }
   }
   filterLaunchYear(serachYear) {
     this.launchYear = this.launchYearClone;
@@ -51,7 +90,14 @@ export class SapientComponent implements OnInit {
     this.launchYear = this.searchYear.length > 0 ? this.searchYear : this.launchYearClone;
   }
   launchYearButtonClick(launchYear) {
-      this.router.navigate([launchYear])
-      this.lauchYearValue =launchYear;
+    this.launchYearValue = launchYear;
+    this.filterApplyInUrl();
+  }
+  reset(event) {
+    console.log(event);
+    this.launchSuccess = false;
+    this.landSuccess = false;
+    this.launchYearValue = undefined;
+    this.filterApplyInUrl();
   }
 }

@@ -58,12 +58,15 @@
     text-align: center;
   }
   
-  .launch button:nth-child(3),
-  .land button:nth-child(3) {
+  .launchbutton button:nth-child(2),
+  .landbutton button:nth-child(2) {
     float: right;
     margin-right: 5px;
   }
-  
+  button.reset {
+    margin: 30px auto 10px;
+    display: block;
+}
   .spaceXGallery {
     width: calc(85% - 20px);
     float: left;
@@ -74,9 +77,12 @@
   .developer{
       width:100%;
       text-align: center;
+      font-weight: bold;
   }
-  .spaceXGallery .card h4 {
+  .spaceXGallery .card .missionName {
     color: #1d1dbd;
+    display: block;
+    margin:10px 0px 0px;
   }
   .showData{
       min-height: 500px;
@@ -91,7 +97,8 @@
     font-size: 14px;
     font-weight: bold;
   }
-  .sidebar button:hover,.sidebar button:active {
+  .sidebar button:hover,.sidebar button:active,
+  .sidebar button.active  {
       opacity: 1;
       cursor: pointer;
   }
@@ -128,9 +135,7 @@
     text-transform: capitalize;
   }
   
-  .sidebar li:first-child button {
-    opacity: 1;
-  }
+ 
   .filter{
     font-weight: bold;
   }
@@ -168,4 +173,29 @@
       width: 100%;
       margin-left: 0px;
     }
+    .sidebar,.spaceXGallery {
+      padding: 10px 25px;
+      max-width: 480px;
+      margin: 0 auto 30px;
+      display: block;
+      float: none;
+  }
+  .spaceXGallery{
+      padding:10px 0px;
+  }
+  .sidebar button{
+      width:100px;
+      height: 30px;
+      font-size: 16px;
+  }
+  .SpaceXContainter h1{
+      text-align:center;
+  }
+  .sidebar button{
+      width:100px;
+      height: 30px;  
+  }
+  .sidebar button,.sidebar input{
+    font-size: 16px;
+  }
   }

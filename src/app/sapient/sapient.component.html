@@ -4,26 +4,37 @@
         <div class="sidebar">
             <p class="filter">Filters</p>
             <div class="launch">
-               <label for="yearFilter"></label> <input type="text" name="yearFilter" placeholder="Launch Year" (change)="filterLaunchYear($event.target.value)">
+                <label for="yearFilter"></label> <input type="text" name="yearFilter" placeholder="Launch Year"
+                    (change)="filterLaunchYear($event.target.value)">
                 <ul>
                     <li *ngFor="let year of launchYear;">
-                        <button (click)="launchYearButtonClick(year)">{{year}}</button>
+                        <button title="{{year}}" [ngClass]="{'active':  launchYearValue === year}"
+                            (click)="launchYearButtonClick(year)">{{year}}</button>
                     </li>
                 </ul>
             </div>
             <div class="launch">
-               <label for="launchYear"></label> <input type="text" name="launchYear" placeholder="Successful Launch"
-                (change)="launchButtonStateChange($event.target.value)">
-                <button (click)="launchSuccess()">{{launchButtonState[0]}}</button>
-                <button (click)="launchFailure()">{{launchButtonState[1]}}</button>
+                <label for="launchYear"></label> <input type="text" name="launchYear" placeholder="Successful Launch"
+                    (change)="launchButtonStateChange($event.target.value)">
+                <div class="launchbutton">
+                    <button title="launchbutton" (click)="isLaunchSuccess()"
+                        [ngClass]="{'active':  launchSuccess === launchButtonState[0]}">{{launchButtonState[0]}}</button>
+                    <button  title="launchbutton" (click)="isLaunchFailure()"
+                        [ngClass]="{'active':  launchSuccess === launchButtonState[1]}">{{launchButtonState[1]}}</button>
+                </div>
             </div>
             <div class="land">
-               <label for="landYear"></label> <input type="text" name="landYear" placeholder="Successful Land" (change)="landButtonStateChange($event.target.value)">
-                <button (click)="landSuccess()">{{landButtonState[0]}}</button>
-                <button (click)="landFailure()">{{landButtonState[1]}}</button>
+                <label for="landYear"></label> <input type="text" name="landYear" placeholder="Successful Landing"
+                    (change)="landButtonStateChange($event.target.value)">
+                <div class="landbutton">
+                    <button  title="land button" (click)="isLandSuccess()"
+                        [ngClass]="{'active':  landSuccess === launchButtonState[0]}">{{landButtonState[0]}}</button>
+                    <button title="land button" (click)="isLandFailure()"
+                        [ngClass]="{'active':  landSuccess === launchButtonState[1]}">{{landButtonState[1]}}</button>
+                </div>
+                <button (click)="reset($event)" class="reset">Reset</button>
             </div>
         </div>
-        <app-sapient-detail-page [isLauchSucess]="lauchSucess" [isLandSuccess]="landSucess"
-        [lauchYearValue]="lauchYearValue"></app-sapient-detail-page>
+        <app-sapient-detail-page></app-sapient-detail-page>
     </div>
 </div>

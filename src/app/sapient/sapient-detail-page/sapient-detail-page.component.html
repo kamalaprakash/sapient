@@ -1,13 +1,13 @@
 
-        <div class="spaceXGallery">
+        <div class="spaceXGallery" title="SpaceX Gallery">
             <div class="card" *ngFor="let spaceXData of spaceXGallery;">
-                <div class="thumbnail"><img src="{{spaceXData?.links?.mission_patch}}" alt="{{spaceXData?.mission_name}}" /></div>
-                <h4 title="{{spaceXData?.mission_name}}">{{spaceXData?.mission_name}} # {{spaceXData?.flight_number}}</h4>
-                <p>MissionIds :<span>{{spaceXData?.mission_id}}</span></p>
-                <p>Launch Year:<span>{{spaceXData?.launch_year}}</span></p>
-                <p>Successful Launch: <span>{{spaceXData?.launch_success}}</span></p>
-                <p>Successful Landing: <span>{{spaceXData?.launch_landing}}</span></p>
+                <div class="thumbnail" title="SpaceX images"><img src="{{spaceXData?.links?.mission_patch_small}}" alt="{{spaceXData?.mission_name}}" /></div>
+                <span class="missionName" title="mission name">{{spaceXData?.mission_name}} # {{spaceXData?.flight_number}}</span>
+                <p title="misson Id">MissionIds :<span>{{spaceXData?.mission_id}}</span></p>
+                <p title="launch Year">Launch Year:<span>{{spaceXData?.launch_year}}</span></p>
+                <p title="Successful Launch">Successful Launch: <span>{{spaceXData?.launch_success}}</span></p>
+                <p title="Successful Land">Successful Landing: <span>{{spaceXData?.launch_landing}}</span></p>
             </div>
             <h2 *ngIf="showNoData" class="showData"> No Data Found </h2>
-            <h4 class="developer">Developed By: <span>Kamala Prakash</span></h4>
+            <p class="developer">Developed By: <span>Kamala Prakash</span></p>
         </div>
