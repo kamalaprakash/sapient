@@ -32,7 +32,7 @@
                     <button title="land button" (click)="isLandFailure()"
                         [ngClass]="{'active':  landSuccess === launchButtonState[1]}">{{landButtonState[1]}}</button>
                 </div>
-                <button (click)="reset($event)" class="reset">Reset</button>
+                <button (click)="reset()" class="reset">Reset</button>
             </div>
         </div>
         <app-sapient-detail-page></app-sapient-detail-page>

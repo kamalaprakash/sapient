@@ -60,14 +60,14 @@ export class SapientComponent implements OnInit {
       });
     } else if (this.launchSuccess && this.landSuccess) {
       this.router.navigate(['/'], { queryParams: { launch_success: 'true', land_success: 'true' } });
-    } else if (this.launchSuccess && this.launchYearValue) {
+    } else if (this.launchSuccess && !this.landSuccess && this.launchYearValue)  {
       this.router.navigate(['/'], {
         queryParams: {
           launch_success: 'true',
           launch_Year: this.launchYearValue.toString()
         }
       });
-    } else if (this.landSuccess && this.launchYearValue) {
+    } else if (this.landSuccess &&!this.launchSuccess && this.launchYearValue) {
       this.router.navigate(['/'], {
         queryParams: {
           land_success: 'true',
@@ -93,10 +93,9 @@ export class SapientComponent implements OnInit {
     this.launchYearValue = launchYear;
     this.filterApplyInUrl();
   }
-  reset(event) {
-    console.log(event);
-    this.launchSuccess = false;
-    this.landSuccess = false;
+  reset() {
+    this.launchSuccess = undefined;
+    this.landSuccess = undefined;
     this.launchYearValue = undefined;
     this.filterApplyInUrl();
   }
