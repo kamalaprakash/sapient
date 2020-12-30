@@ -8,11 +8,11 @@ Desktop View
 
 Ipad View
 
-![](src/assets/ipad.png)
+![](src/assets/ipad.jpg)
 
 Mobile View
 
-![](src/assets/mobileView.png)
+![](src/assets/mobileView.jpg)
 
 Year Filter
 
@@ -28,6 +28,9 @@ Successfullylaunch
 
 LightHouse Score
 ![](src/assets/lighthousescore.jpg)
+
+Karma Test Case
+![](src/assets/testcase.PNG)
 
 Heroku BuildLog
 https://dashboard.heroku.com/apps/infinite-wave-46916/activity/builds/049d9ad1-40ae-4ab9-b8ca-7bd228dfd709
