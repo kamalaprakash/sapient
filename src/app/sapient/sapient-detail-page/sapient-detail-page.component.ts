@@ -20,7 +20,7 @@ export class SapientDetailPageComponent implements OnInit {
       const queryParam: string = Object.keys(params).length > 0 ? JSON.stringify(params).split(':').join('=').
         split(',').join('&').split('"').join('').toString().split('{').join('&').split('}').join('') : ' ';
       this.sapiantService.onloadRequest(queryParam).subscribe((spaceXData) => {
-        this.spaceXGallery = spaceXData.filter((filterData)=>filterData===params);
+        this.spaceXGallery = spaceXData;
       });
     });
   }
