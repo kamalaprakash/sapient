@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SapientComponent } from '../sapient/sapient.component';
 
 const routes: Routes = [
-  { path: '**', component: SapientComponent } 
+  { path: '**', component: SapientComponent }
 ];
 
 @NgModule({

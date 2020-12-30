@@ -1,4 +1,3 @@
-
         <div class="spaceXGallery" title="SpaceX Gallery">
             <div class="card" *ngFor="let spaceXData of spaceXGallery;">
                 <div class="thumbnail" title="SpaceX images"><img src="{{spaceXData?.links?.mission_patch_small}}" alt="{{spaceXData?.mission_name}}" /></div>
@@ -6,7 +5,7 @@
                 <p title="misson Id">MissionIds :<span>{{spaceXData?.mission_id}}</span></p>
                 <p title="launch Year">Launch Year:<span>{{spaceXData?.launch_year}}</span></p>
                 <p title="Successful Launch">Successful Launch: <span>{{spaceXData?.launch_success}}</span></p>
-                <p title="Successful Land">Successful Landing: <span>{{spaceXData?.launch_landing}}</span></p>
+                <p title="Successful Land">Successful Landing: <span>{{spaceXData?.rocket?.first_stage?.cores[0]?.land_success}}</span></p>
             </div>
             <h2 *ngIf="showNoData" class="showData"> No Data Found </h2>
             <p class="developer">Developed By: <span>Kamala Prakash</span></p>

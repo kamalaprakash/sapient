@@ -5,12 +5,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SapiantService {
-  spaceXEndpoint: string = 'https://api.spaceXdata.com/v3/launches?limit=100';
+  spaceXEndpoint = 'https://api.spaceXdata.com/v3/launches?limit=100';
 
   constructor(private httpClient: HttpClient) { }
-  onloadRequest(queryParam) {
-    if(queryParam){
-    return this.httpClient.get<any>(this.spaceXEndpoint+queryParam);
-  }
+  onloadRequest(queryParam): any {
+    if (queryParam) {
+      return this.httpClient.get<any>(this.spaceXEndpoint + queryParam);
+    }
   }
 }

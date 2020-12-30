@@ -3,8 +3,8 @@
         <h1 title="spaceXHeader">{{spaceXHeader}}</h1>
         <div class="sidebar">
             <p class="filter">Filters</p>
-            <div class="launch">
-                <label for="yearFilter"></label> <input type="text" name="yearFilter" placeholder="Launch Year"
+            <div class="launch"><label for="yearFilter"> </label>
+                <input type="text" aria-labelledby="yearFilter" id="yearFilter" placeholder="Launch Year"
                     (change)="filterLaunchYear($event.target.value)">
                 <ul>
                     <li *ngFor="let year of launchYear;">
@@ -14,20 +14,22 @@
                 </ul>
             </div>
             <div class="launch">
-                <label for="launchYear"></label> <input type="text" name="launchYear" placeholder="Successful Launch"
+                <label for="launchYear"> </label>
+                <input type="text" aria-labelledby="launchYear" id="launchYear" placeholder="Successful Launch"
                     (change)="launchButtonStateChange($event.target.value)">
                 <div class="launchbutton">
                     <button title="launchbutton" (click)="isLaunchSuccess()"
                         [ngClass]="{'active':  launchSuccess === launchButtonState[0]}">{{launchButtonState[0]}}</button>
-                    <button  title="launchbutton" (click)="isLaunchFailure()"
+                    <button title="launchbutton" (click)="isLaunchFailure()"
                         [ngClass]="{'active':  launchSuccess === launchButtonState[1]}">{{launchButtonState[1]}}</button>
                 </div>
             </div>
             <div class="land">
-                <label for="landYear"></label> <input type="text" name="landYear" placeholder="Successful Landing"
+                <label for="landYear"></label>
+                <input type="text" aria-labelledby="landYear" id="landYear" placeholder="Successful Landing"
                     (change)="landButtonStateChange($event.target.value)">
                 <div class="landbutton">
-                    <button  title="land button" (click)="isLandSuccess()"
+                    <button title="land button" (click)="isLandSuccess()"
                         [ngClass]="{'active':  landSuccess === launchButtonState[0]}">{{landButtonState[0]}}</button>
                     <button title="land button" (click)="isLandFailure()"
                         [ngClass]="{'active':  landSuccess === launchButtonState[1]}">{{landButtonState[1]}}</button>

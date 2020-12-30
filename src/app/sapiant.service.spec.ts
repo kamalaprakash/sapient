@@ -8,8 +8,8 @@ describe('SapiantService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule], 
-        providers: [SapiantService]
+      imports: [HttpClientTestingModule],
+      providers: [SapiantService]
     });
     service = TestBed.inject(SapiantService);
   });

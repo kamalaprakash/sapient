@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SapiantService } from 'src/app/sapiant.service';
 
 @Component({
@@ -9,18 +9,18 @@ import { SapiantService } from 'src/app/sapiant.service';
 })
 export class SapientDetailPageComponent implements OnInit {
   spaceXGallery: object;
-  showNoData: boolean = false;
-  queryParam: string;
-  constructor(public sapiantService: SapiantService, public routeUrl: Router,
-    private route: ActivatedRoute) { }
+  showNoData = false;
+
+  constructor(public sapiantService: SapiantService, public routeUrl: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.onloadData();
   }
-  onloadData() {
+  onloadData(): void {
     this.route.queryParams.subscribe(params => {
-      this.queryParam = Object.keys(params).length > 0 ? JSON.stringify(params).split(':').join('=').split(',').join('&').split('"').join('').toString().split('{').join('&').split('}').join('') : ' ';
-      this.sapiantService.onloadRequest(this.queryParam).subscribe((spaceXData) => {
-        this.spaceXGallery = spaceXData;
+      const queryParam: string = Object.keys(params).length > 0 ? JSON.stringify(params).split(':').join('=').
+        split(',').join('&').split('"').join('').toString().split('{').join('&').split('}').join('') : ' ';
+      this.sapiantService.onloadRequest(queryParam).subscribe((spaceXData) => {
+        this.spaceXGallery = spaceXData.filter((filterData)=>filterData===params);
       });
     });
   }

@@ -1,6 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { ComponentFixture,  TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SapiantService } from 'src/app/sapiant.service';
 
@@ -12,31 +11,29 @@ describe('SapientDetailPageComponent', () => {
   let service: SapiantService;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SapientDetailPageComponent ],
+      declarations: [SapientDetailPageComponent],
       imports: [
-        HttpClientTestingModule,RouterTestingModule],
+        HttpClientTestingModule, RouterTestingModule],
       providers: [SapiantService]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SapientDetailPageComponent);
     component = fixture.componentInstance;
-    service =  TestBed.inject(SapiantService);     
- 
+    service = TestBed.inject(SapiantService);
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('Sapient service is caling', () => {    
+  it('Sapient service is caling', () => {
     expect(service).toBeTruthy();
   });
-  it('SpaceX data loded successfully', () => {  
-    component.ngOnInit();  
-    component.spaceXGallery={land_sucess:"true"};
+  it('SpaceX data loded successfully', () => {
+    component.ngOnInit();
+    component.spaceXGallery = { land_sucess: 'true' };
     expect(component.spaceXGallery).toBeTruthy();
   });
 });
